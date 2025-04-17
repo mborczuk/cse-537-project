@@ -649,6 +649,15 @@ class Game:
             copy_state.tetromino.move((0, 1, 0))
             if copy_state.check_collision():
                 copy_state.tetromino.move((0, -1, 0))
+                ##########################################
+                # 534 LOG ACTIONS
+                file = open("logs/test.txt", "a")
+                file.write("\n\n");
+                file.write(str(self.current_state.next[0]))
+                file.write("\n");
+                file.write(str(self.current_state.grid))
+                file.write("\n");
+                ##########################################
                 add_score, done = copy_state.process_down_collision()
             success = True  # move down will take effect no matter what
         elif action == "soft":
@@ -657,6 +666,15 @@ class Game:
             success = True
         elif action == "drop":
             add_score, done = copy_state.hard_drop()
+            ##########################################
+            #534 LOG ACTIONS
+            file = open("logs/test.txt", "a")
+            file.write("\n\n");
+            file.write(str(self.current_state.next[0]))
+            file.write("\n");
+            file.write(str(self.current_state.grid))
+            file.write("\n");
+            ###########################################################
             success = True
         elif action == "hold":
             success = copy_state.hold()
@@ -664,6 +682,12 @@ class Game:
             print(str(action) + " action is not found. Please check.")
 
         if success:
+            ##########################################
+            #534 LOG ACTIONS
+            file = open("logs/test.txt", "a")
+            if(action != "down" and action != "soft" and action != "drop" and action != "hold"):
+                file.write(action + ", ")
+            ##########################################
             self.current_state = copy_state
 
         if action == "down" or action == "drop" or action == "hold":
@@ -674,6 +698,15 @@ class Game:
             if self.current_state.check_collision():
                 self.current_state.tetromino.move((0, -1, 0))
                 add_score, done = self.current_state.process_down_collision()
+                ##########################################
+                #534 LOG ACTIONS
+                file = open("logs/test.txt", "a")
+                file.write("\n\n");
+                file.write(str(self.current_state.next[0]))
+                file.write("\n");
+                file.write(str(self.current_state.grid))
+                file.write("\n");
+                ##########################################
             success = True  # move down will take effect no matter what
         else:
             self.current_state.idle += 1
@@ -724,6 +757,7 @@ class Game:
         is_run = True
 
         while is_run:
+
             if self.gui is not None:
                 self.update_gui()
                 self.gui.redraw()
@@ -799,12 +833,12 @@ class Game:
                     if event.key == pygame.K_2:
                         # changing current tetromino
                         pool_size = Tetromino.pool_size()
-                        num = self.current_state.tetromino.to_num()
+                        num = self.current_state.tetromino.to_num()#
                         # remember the return num has already been increased by 1, leaving room for 0
                         if num >= pool_size:
                             num = num - pool_size
                         self.current_state.tetromino = Tetromino.new_tetromino_num(num)
-
+            # file.write("\n\n");
 
     def info_print(self):
         print(self.current_state.score)
