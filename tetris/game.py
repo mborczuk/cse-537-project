@@ -11,6 +11,9 @@ from tetris.common import *
 from tetris.gui import Gui
 from lib.game_agent_comms import CommunicationsLog
 
+
+from prediction import predict;
+
 INITIAL_EX_WIGHT = 0.0
 SPIN_SHIFT_FOR_NON_T = [(1, 0, 0), (-1, 0, 0),
                         (0, 1, 0), (0, -1, 0),
@@ -36,6 +39,48 @@ ACTIONS = [
 ]
 
 IDLE_MAX = 9999
+
+
+# def predict(data):
+#     f = open("logs/samples.json")
+#     j = json.loads("\n".join(f.readlines()))
+#     # Example using NumPy arrays
+#     x = []
+#     y = []
+#     for i in range(0, 259):
+#         sample_x = [int(j[str(i)]['board']), ord(j[str(i)]['piece'])]
+#         sample_y = f"{j[str(i)]['movement']}:{j[str(i)]['rotation']}"
+#         x.append(sample_x)
+#         y.append(sample_y)
+#     X_np = np.array(x)
+#     y_np = np.array(y)
+#     scaler = MinMaxScaler()
+#     scaled_data = scaler.fit_transform(X_np)
+#     print(scaled_data)
+#     # Split data into training and testing sets
+#     X_train, X_test, y_train, y_test = train_test_split(scaled_data, y_np, random_state=42)
+#     # Train a logistic regression model
+#     model = RandomForestClassifier()
+#     model.fit(X_train, y_train)
+
+#     board = str(data[0])
+#     board = json.loads(board)
+#     power = len(board[0]) * len(board) - 1
+#     sum = 0
+#     for i in board:
+#         for j in i:
+#             print(j)
+#             if (j != 0):
+#                 sum += 2 ** power
+#             power -= 1
+#     x.append([sum, ord(data[1])])
+#     data_np = np.array(x);
+#     sc = scaler.fit_transform(data_np)
+#     print(data_np);
+#     print(sc);
+#     return model.predict(sc);
+
+
 
 
 class Gamestate:
@@ -651,12 +696,14 @@ class Game:
                 copy_state.tetromino.move((0, -1, 0))
                 ##########################################
                 # 534 LOG ACTIONS
-                file = open("logs/test.txt", "a")
+                print("HERE")
+                file = open("logs/test2.txt", "a")
                 file.write("\n\n");
                 file.write(str(self.current_state.next[0]))
                 file.write("\n");
                 file.write(str(self.current_state.grid))
                 file.write("\n");
+                print(predict([self.current_state.grid, self.current_state.next[0]]));
                 ##########################################
                 add_score, done = copy_state.process_down_collision()
             success = True  # move down will take effect no matter what
@@ -668,12 +715,13 @@ class Game:
             add_score, done = copy_state.hard_drop()
             ##########################################
             #534 LOG ACTIONS
-            file = open("logs/test.txt", "a")
+            file = open("logs/test2.txt", "a")
             file.write("\n\n");
             file.write(str(self.current_state.next[0]))
             file.write("\n");
             file.write(str(self.current_state.grid))
             file.write("\n");
+            print(predict([self.current_state.grid, self.current_state.next[0]]));
             ###########################################################
             success = True
         elif action == "hold":
@@ -684,7 +732,7 @@ class Game:
         if success:
             ##########################################
             #534 LOG ACTIONS
-            file = open("logs/test.txt", "a")
+            file = open("logs/test2.txt", "a")
             if(action != "down" and action != "soft" and action != "drop" and action != "hold"):
                 file.write(action + ", ")
             ##########################################
@@ -700,12 +748,13 @@ class Game:
                 add_score, done = self.current_state.process_down_collision()
                 ##########################################
                 #534 LOG ACTIONS
-                file = open("logs/test.txt", "a")
+                file = open("logs/test2.txt", "a")
                 file.write("\n\n");
                 file.write(str(self.current_state.next[0]))
                 file.write("\n");
                 file.write(str(self.current_state.grid))
                 file.write("\n");
+                print(predict([self.current_state.grid, self.current_state.next[0]]));
                 ##########################################
             success = True  # move down will take effect no matter what
         else:
