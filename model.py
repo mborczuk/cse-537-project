@@ -16,17 +16,21 @@ j = json.loads("\n".join(f.readlines()))
 x = []
 y = []
 for i in range(0, 259):
-    sample_x = [int(j[str(i)]['board']), ord(j[str(i)]['piece'])]
+    print(int(j[str(i)]['board'][0]))
+    sample_x = []
+    for k in range(0, 20):
+        sample_x.append(int(j[str(i)]['board'][k]))
+    sample_x.append(ord(j[str(i)]['piece']))
     sample_y = f"{j[str(i)]['movement']}:{j[str(i)]['rotation']}"
     x.append(sample_x)
     y.append(sample_y)
 X_np = np.array(x)
 y_np = np.array(y)
-scaler = MinMaxScaler()
-scaled_data = scaler.fit_transform(X_np)
-print(scaled_data)
+# scaler = MinMaxScaler()
+# scaled_data = scaler.fit_transform(X_np)
+# print(scaled_data)
 # Split data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(scaled_data, y_np, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X_np, y_np, random_state=42)
 
 model = RandomForestClassifier()
 model.fit(X_train, y_train)

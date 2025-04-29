@@ -13,8 +13,11 @@ def predict(data):
     # Example using NumPy arrays
     x = []
     y = []
-    for i in range(0, 259):
-        sample_x = [int(j[str(i)]['board']), ord(j[str(i)]['piece'])]
+    for i in j.keys():
+        sample_x = []
+        for k in range(0, 20):
+            sample_x.append(int(j[str(i)]['board'][k]))
+        sample_x.append(ord(j[str(i)]['piece']))
         sample_y = f"{j[str(i)]['movement']}:{j[str(i)]['rotation']}"
         x.append(sample_x)
         y.append(sample_y)
