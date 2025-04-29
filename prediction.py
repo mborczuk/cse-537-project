@@ -42,7 +42,7 @@ def predict(data):
                 sum += 2 ** power
             power -= 1
         sum_list.append(sum)
-    x.append(sum_list + ord(data[1]))
+    x.append(sum_list + [ord(data[1])])
     data_np = np.array(x)
     # sc = scaler.fit_transform(data_np)
     res = model.predict(data_np)
