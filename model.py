@@ -2,8 +2,11 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import SGDClassifier, LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.preprocessing import MinMaxScaler
+from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.naive_bayes import GaussianNB
 import json
 
 f = open("logs/samples.json")
@@ -24,12 +27,21 @@ scaled_data = scaler.fit_transform(X_np)
 print(scaled_data)
 # Split data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(scaled_data, y_np, random_state=42)
-# Train a logistic regression model
+
 model = RandomForestClassifier()
 model.fit(X_train, y_train)
 
 # Make predictions
-predictions = model.predict(X_train)
+predictions = model.predict(X_test)
 
-print(y_train)
+print(y_test)
 print(predictions)
+
+count = 0
+for i in range(0, len(y_test)):
+    if (y_test[i] == predictions[i]):
+        count += 1
+
+print(count)
+print(len(y_test))
+print(count / len(y_test))
