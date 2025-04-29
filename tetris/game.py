@@ -12,7 +12,7 @@ from tetris.gui import Gui
 from lib.game_agent_comms import CommunicationsLog
 
 
-from prediction import predict;
+from prediction_mul import predict;
 
 INITIAL_EX_WIGHT = 0.0
 SPIN_SHIFT_FOR_NON_T = [(1, 0, 0), (-1, 0, 0),

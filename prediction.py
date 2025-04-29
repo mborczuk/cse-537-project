@@ -8,7 +8,7 @@ import json
 
 
 def predict(data):
-    f = open("logs/samples.json")
+    f = open("samples_new_2.json")
     j = json.loads("\n".join(f.readlines()))
     # Example using NumPy arrays
     x = []

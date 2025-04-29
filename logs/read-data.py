@@ -1,9 +1,9 @@
 import json
-import numpy as np 
+# import numpy as np 
 
-f = open("test.txt")
+f = open("logs/test2.txt")
 l = f.readlines()
-g = open("samples.json", "w")
+g = open("samples_new_2.json", "w")
 
 index = 0
 dic = {}
@@ -26,19 +26,21 @@ while (index < len(l)):
     rot = rot % 4
     if (rot < 0):
         rot = 3 - (rot + 1)
-    print(move_list, step, rot)
+    # print(move_list, step, rot)
     board = l[index + 1][0:-1]
+    print(board)
+    print("index: " + str(index))
+    print("Max: " + str(len(l)))
     board = json.loads(board)
     sum_list = []
+
     for i in board:
         sum = 0
         power = len(board[0]) - 1
-        print(power)
         for j in i:
             if (j != 0):
                 sum += 2 ** power
             power -= 1
-        print(sum)
         sum_list.append(sum)
     print(sum_list)
     dic[sample_count] = {}
