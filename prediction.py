@@ -23,10 +23,10 @@ def predict(data):
         y.append(sample_y)
     X_np = np.array(x)
     y_np = np.array(y)
-    scaler = MinMaxScaler()
-    scaled_data = scaler.fit_transform(X_np)
+    # scaler = MinMaxScaler()
+    # scaled_data = scaler.fit_transform(X_np)
     # Split data into training and testing sets
-    X_train, X_test, y_train, y_test = train_test_split(scaled_data, y_np, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(X_np, y_np, random_state=42)
     # Train a logistic regression model
     model = RandomForestClassifier()
     model.fit(X_train, y_train)
