@@ -33,15 +33,17 @@ def predict(data):
 
     board = str(data[0])
     board = json.loads(board)
-    power = len(board[0]) * len(board) - 1
-    sum = 0
+    sum_list = []
     for i in board:
+        sum = 0
+        power = len(board[0]) - 1
         for j in i:
             if (j != 0):
                 sum += 2 ** power
             power -= 1
-    x.append([sum, ord(data[1])])
-    data_np = np.array(x);
-    sc = scaler.fit_transform(data_np)
-    res = model.predict(sc);
-    return res[len(res)-1];
+        sum_list.append(sum)
+    x.append(sum_list + ord(data[1]))
+    data_np = np.array(x)
+    # sc = scaler.fit_transform(data_np)
+    res = model.predict(data_np)
+    return res[len(res)-1]
