@@ -4,6 +4,9 @@ import json
 f = open("logs/test2.txt")
 l = f.readlines()
 g = open("samples_new_2.json", "w")
+# f = open("julia.txt")
+# l = f.readlines()
+# g = open("samples-julia.json", "w")
 
 index = 0
 dic = {}

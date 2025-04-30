@@ -14,6 +14,8 @@ def predict(data):
     x = []
     y = []
     for i in j.keys():
+        # if (int(i) < 555): # ignore my samples only use julia's
+        #     continue
         sample_x = []
         for k in range(0, 20):
             sample_x.append(int(j[str(i)]['board'][k]))
