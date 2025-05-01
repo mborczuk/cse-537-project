@@ -655,7 +655,7 @@ class Game:
                 ##########################################
                 # 534 LOG ACTIONS
                 print("HERE")
-                file = open("logs/test.txt", "a")
+                file = open("logs/quarantine.txt", "a")
                 file.write("\n\n");
                 file.write(str(self.current_state.next[0]))
                 file.write("\n");
@@ -673,7 +673,7 @@ class Game:
             add_score, done = copy_state.hard_drop()
             ##########################################
             #534 LOG ACTIONS
-            file = open("logs/test.txt", "a")
+            file = open("logs/quarantine.txt", "a")
             file.write("\n\n");
             file.write(str(self.current_state.next[0]))
             file.write("\n");
@@ -690,7 +690,7 @@ class Game:
         if success:
             ##########################################
             #534 LOG ACTIONS
-            file = open("logs/test.txt", "a")
+            file = open("logs/quarantine.txt", "a")
             if(action != "down" and action != "soft" and action != "drop" and action != "hold"):
                 file.write(action + ", ")
             ##########################################
@@ -706,7 +706,7 @@ class Game:
                 add_score, done = self.current_state.process_down_collision()
                 ##########################################
                 #534 LOG ACTIONS
-                file = open("logs/test.txt", "a")
+                file = open("logs/quarantine.txt", "a")
                 file.write("\n\n");
                 file.write(str(self.current_state.next[0]))
                 file.write("\n");
