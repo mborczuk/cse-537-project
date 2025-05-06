@@ -85,7 +85,7 @@ def predict(data):
     y_2_np = np.array(y_2)
     scaled_data_2 = scaler.fit_transform(X_2_np)
     X_train_2, X_test_2, y_train_2, y_test_2 = train_test_split(scaled_data_2, y_2_np, random_state=42)
-    model_2 = KNeighborsClassifier(20)
+    model_2 = RandomForestClassifier(n_estimators=43)
     model_2.fit(X_train_2, y_train_2)
     y_pred_2 = model_2.predict(X_test_2);
     accuracy = accuracy_score(y_test_2, y_pred_2)
@@ -95,7 +95,7 @@ def predict(data):
     y_3_np = np.array(y_3)
     scaled_data_3 = scaler.fit_transform(X_3_np)
     X_train_3, X_test_3, y_train_3, y_test_3 = train_test_split(scaled_data_3, y_3_np, random_state=42)
-    model_3 = KNeighborsClassifier(20)
+    model_3 = RandomForestClassifier(n_estimators=50)
     model_3.fit(X_train_3, y_train_3)
     y_pred_3 = model_3.predict(X_test_3);
     accuracy = accuracy_score(y_test_3, y_pred_3)
@@ -105,7 +105,7 @@ def predict(data):
     y_4_np = np.array(y_4)
     scaled_data_4 = scaler.fit_transform(X_4_np)
     X_train_4, X_test_4, y_train_4, y_test_4 = train_test_split(scaled_data_4, y_4_np, random_state=42)
-    model_4 = KNeighborsClassifier(20)
+    model_4 = RandomForestClassifier(n_estimators=50)
     model_4.fit(X_train_4, y_train_4)
     y_pred_4 = model_4.predict(X_test_4);
     accuracy = accuracy_score(y_test_4, y_pred_4)
@@ -135,7 +135,7 @@ def predict(data):
     y_7_np = np.array(y_7)
     scaled_data_7 = scaler.fit_transform(X_7_np)
     X_train_7, X_test_7, y_train_7, y_test_7 = train_test_split(scaled_data_7, y_7_np, random_state=42)
-    model_7 = KNeighborsClassifier(20)
+    model_7 = RandomForestClassifier(n_estimators=40)
     model_7.fit(X_train_7, y_train_7)
     y_pred_7 = model_1.predict(X_test_7);
     accuracy = accuracy_score(y_test_7, y_pred_7)
