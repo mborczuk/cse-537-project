@@ -12,7 +12,7 @@ import json
 
 
 def predict(data):
-    f = open("logs/samples-julia.txt.json")
+    f = open("logs/samples-julia-outline.json")
     j = json.loads("\n".join(f.readlines()))
     # f2 = open("data_new_1.json")
     # j2 = json.loads("\n".join(f2.readlines()))

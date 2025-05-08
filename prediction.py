@@ -4,11 +4,12 @@ from sklearn.linear_model import SGDClassifier, LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import MinMaxScaler
+from sklearn.neighbors import KNeighborsClassifier
 import json
 
 
 def predict(data):
-    f = open("samples_new_2.json")
+    f = open("logs/samples-julia-outline.json")
     j = json.loads("\n".join(f.readlines()))
     # Example using NumPy arrays
     x = []
@@ -17,7 +18,7 @@ def predict(data):
         # if (int(i) < 555): # ignore my samples only use julia's
         #     continue
         sample_x = []
-        for k in range(0, 20):
+        for k in range(0, 10):
             sample_x.append(int(j[str(i)]['board'][k]))
         sample_x.append(ord(j[str(i)]['piece']))
         sample_y = f"{j[str(i)]['movement']}:{j[str(i)]['rotation']}"
@@ -30,20 +31,35 @@ def predict(data):
     # Split data into training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(X_np, y_np, random_state=42)
     # Train a logistic regression model
-    model = RandomForestClassifier()
+    model = KNeighborsClassifier()
     model.fit(X_train, y_train)
 
     board = str(data[0])
     board = json.loads(board)
-    sum_list = []
+    power = len(board[0]) * len(board) - 1
+
+    sum_list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+    row = 0;
     for i in board:
-        sum = 0
-        power = len(board[0]) - 1
+        loc = 0;
         for j in i:
-            if (j != 0):
-                sum += 2 ** power
-            power -= 1
-        sum_list.append(sum)
+            if (j != 0 and sum_list[loc] < j):
+                sum_list[loc] = 20-row;
+            loc+=1;
+        row+=1;
+    
+    # board = str(data[0])
+    # board = json.loads(board)
+    # sum_list = []
+    # for i in board:
+    #     sum = 0
+    #     power = len(board[0]) - 1
+    #     for j in i:
+    #         if (j != 0):
+    #             sum += 2 ** power
+    #         power -= 1
+    #     sum_list.append(sum)
     x.append(sum_list + [ord(data[1])])
     data_np = np.array(x)
     # sc = scaler.fit_transform(data_np)
