@@ -49,11 +49,11 @@ Once these settings are set, the code can be run with ```python main.py``. This 
 
 ### Datasets
 - ```samples.json``` 
-    - test dataset, do not use  
+    - Test dataset, do not use  
 - ```samples-julia.json``` 
-    - dataset used to test first 3 classifiers
-    - encodes the entire board matrix  
+    - Dataset used to test first 3 classifiers
+    - Encodes the entire board matrix  
 - ```samples-julia-outline.json```
-    - dataset used to test last 3 classifiers
-    - encodes only the heights of each board column  
+    - Dataset used to test last 3 classifiers
+    - Encodes only the heights of each board column  
 
