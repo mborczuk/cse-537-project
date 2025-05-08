@@ -57,3 +57,6 @@ Once these settings are set, the code can be run with ```python main.py``. This 
     - Dataset used to test last 3 classifiers
     - Encodes only the heights of each board column  
 
+## Requirements
+All requirements can be found in requirements.txt.
+
