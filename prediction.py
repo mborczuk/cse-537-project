@@ -5,6 +5,8 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.neural_network import MLPClassifier
+
 import json
 
 
@@ -31,7 +33,7 @@ def predict(data):
     # Split data into training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(X_np, y_np, random_state=42)
     # Train a logistic regression model
-    model = KNeighborsClassifier()
+    model = RandomForestClassifier()
     model.fit(X_train, y_train)
 
     board = str(data[0])

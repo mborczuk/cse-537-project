@@ -20,17 +20,17 @@ Once these settings are set, the code can be run with ```python main.py``. This 
 
 ## Models and Datasets Available
 ### Models
-Random - can be run with ```python main.py mode=random``; from the original paper
-LLM (Google Gemini) - can be run with ```python main.py --model gemini-1.5-flash --temperature 0.4 --prompt_name complex_cot_prompt_n5_multiple_actions_v1```; from the original paper
-Random Forest - can be run by editing line 33 of ```prediction.py``` to use ```RandomForestClassifier()```; use ```samples-julia.json``` on line 11; use ```from prediction import predict``` on line 15 of ```tetris/game.py```
-K Neighbors - can be run by editing line 33 of ```prediction.py``` to use ```KNeighborsClassifier(n_neighbors=37)```; use ```samples-julia.json``` on line 11; use ```from prediction import predict``` on line 15 of ```tetris/game.py```
-Multi-Layer Perceptron - can be run by editing line 33 of ```prediction.py``` to use ```MLPClassifier(hidden_layer_sizes=(100, 100))```; use ```samples-julia.json``` on line 11use ```from prediction import predict``` on line 15 of ```tetris/game.py```
-Outline Only - can be run by editing line 33 of ```prediction.py``` to use ```RandomForestClassifier()```; use ```samples-julia-outline.json``` on line 11use ```from prediction import predict``` on line 15 of ```tetris/game.py```
-Trenchcoat (Random Forest) - use ```from prediction_mul_random import predict``` on line 15 of ```tetris/game.py```
-Trenchcoat (Optimized) - use ```from prediction_mul import predict``` on line 15 of ```tetris/game.py```
+Random - can be run with ```python main.py mode=random```; from the original paper 
+LLM (Google Gemini) - can be run with ```python main.py --model gemini-1.5-flash --temperature 0.4 --prompt_name complex_cot_prompt_n5_multiple_actions_v1```; from the original paper 
+Random Forest - can be run by editing line 33 of ```prediction.py``` to use ```RandomForestClassifier()```; use ```samples-julia.json``` on line 11; use ```from prediction import predict``` on line 15 of ```tetris/game.py``` 
+K Neighbors - can be run by editing line 33 of ```prediction.py``` to use ```KNeighborsClassifier(n_neighbors=37)```; use ```samples-julia.json``` on line 11; use ```from prediction import predict``` on line 15 of ```tetris/game.py``` 
+Multi-Layer Perceptron - can be run by editing line 33 of ```prediction.py``` to use ```MLPClassifier(hidden_layer_sizes=(100, 100))```; use ```samples-julia.json``` on line 11use ```from prediction import predict``` on line 15 of ```tetris/game.py``` 
+Outline Only - can be run by editing line 33 of ```prediction.py``` to use ```RandomForestClassifier()```; use ```samples-julia-outline.json``` on line 11use ```from prediction import predict``` on line 15 of ```tetris/game.py``` 
+Trenchcoat (Random Forest) - use ```from prediction_mul_random import predict``` on line 15 of ```tetris/game.py``` 
+Trenchcoat (Optimized) - use ```from prediction_mul import predict``` on line 15 of ```tetris/game.py``` 
 
 ### Datasets
-```samples.json``` - test dataset, do not use
-```samples-julia.json``` - dataset used to test first 3 classifiers; encodes the entire board matrix
-```samples-julia-outline.json``` - dataset used to test last 3 classifiers; encodes only the heights of each board column
+```samples.json``` - test dataset, do not use 
+```samples-julia.json``` - dataset used to test first 3 classifiers; encodes the entire board matrix 
+```samples-julia-outline.json``` - dataset used to test last 3 classifiers; encodes only the heights of each board column 
 
