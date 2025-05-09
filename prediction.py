@@ -12,15 +12,17 @@ import json
 
 def predict(data, classifier_mode, dataset_mode):
     f = open("logs/samples-julia.json") # regular dataset
+    arr_size = 20 # size of board representation
     if (dataset_mode == 1): 
         f = open("logs/samples-julia-outline.json") # outline dataset
+        arr_size = 10
     j = json.loads("\n".join(f.readlines()))
 
     x = []
     y = []
     for i in j.keys():
         sample_x = []
-        for k in range(0, 10):
+        for k in range(0, arr_size):
             sample_x.append(int(j[str(i)]['board'][k]))
         sample_x.append(ord(j[str(i)]['piece']))
         sample_y = f"{j[str(i)]['movement']}:{j[str(i)]['rotation']}"
@@ -46,18 +48,18 @@ def predict(data, classifier_mode, dataset_mode):
     board = json.loads(board)
     power = len(board[0]) * len(board) - 1
 
-    if (classifier_mode == 1): # outline dataset
+    if (dataset_mode == 1): # outline dataset
         sum_list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-        row = 0;
+        row = 0
         for i in board:
-            loc = 0;
+            loc = 0
             for j in i:
                 if (j != 0 and sum_list[loc] < j):
-                    sum_list[loc] = 20-row;
-                loc+=1;
-            row+=1;
-    if (classifier_mode == 0): # regular dataset
+                    sum_list[loc] = 20-row
+                loc+=1
+            row+=1
+    if (dataset_mode == 0): # regular dataset
         sum_list = []
         for i in board:
             sum = 0

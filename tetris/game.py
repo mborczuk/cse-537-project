@@ -12,7 +12,7 @@ from tetris.gui import Gui
 from lib.game_agent_comms import CommunicationsLog
 
 
-from prediction import predict; # To change models, change this import statement. Possible values: prediction (Random Forest/K Neighbors/MLP/Outline Only; use mode flags to switch between them), prediction_mul_random (Random Forest Trenchcoat), prediction_mul (Optimized Trenchcoat)
+from prediction_mul import predict; # To change models, change this import statement. Possible values: prediction (Random Forest/K Neighbors/MLP/Outline Only; use mode flags to switch between them), prediction_mul_random (Random Forest Trenchcoat), prediction_mul (Optimized Trenchcoat)
 # Mode flags for prediction.py. These have no effect on the other model files (prediction_mul.py and prediction_mul_random.py)
 classifier_mode = 0 # 0 for Random Forest, 1 for K Neighbors, 2 for MLP
 dataset_mode = 1 # 0 for regular dataset, 1 for outline dataset

@@ -147,14 +147,14 @@ def predict(data, classifier_mode, dataset_mode): # classifier_mode and dataset_
 
     sum_list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-    row = 0;
+    row = 0
     for i in board:
-        loc = 0;
+        loc = 0
         for j in i:
             if (j != 0 and sum_list[loc] < j):
-                sum_list[loc] = 20-row;
-            loc+=1;
-        row+=1;
+                sum_list[loc] = 20-row
+            loc+=1
+        row+=1
 
 
 
@@ -172,32 +172,32 @@ def predict(data, classifier_mode, dataset_mode): # classifier_mode and dataset_
     #     sum_list.append(sum)
 
     x_1.append(sum_list)
-    data_np = np.array(x_1);
-    res = model_1.predict(data_np);
+    data_np = np.array(x_1)
+    res = model_1.predict(data_np)
     if(str(data[1]) == "L"):
-        x_1.append(0);
+        x_1.append(0)
     elif(str(data[1]) == "S"):
         x_2.append(sum_list)
-        data_np = np.array(x_2);
-        res = model_2.predict(data_np);
+        data_np = np.array(x_2)
+        res = model_2.predict(data_np)
     elif(str(data[1]) == "J"):
         x_3.append(sum_list)
-        data_np = np.array(x_3);        
-        res = model_3.predict(data_np);
+        data_np = np.array(x_3)        
+        res = model_3.predict(data_np)
     elif(str(data[1]) == "I"):
         x_4.append(sum_list)
-        data_np = np.array(x_4);       
-        res = model_4.predict(data_np);
+        data_np = np.array(x_4)       
+        res = model_4.predict(data_np)
     elif(str(data[1])== "O"):
         x_5.append(sum_list)
-        data_np = np.array(x_5);       
-        res = model_5.predict(data_np);
+        data_np = np.array(x_5)      
+        res = model_5.predict(data_np)
     elif(str(data[1]) == "Z"):
         x_6.append(sum_list)
-        data_np = np.array(x_6);       
-        res = model_6.predict(data_np);
+        data_np = np.array(x_6)      
+        res = model_6.predict(data_np)
     elif(str(data[1]) == "T"):
         x_7.append(sum_list)
-        data_np = np.array(x_7);       
-        res = model_7.predict(data_np);
-    return res[len(res)-1];
+        data_np = np.array(x_7)       
+        res = model_7.predict(data_np)
+    return res[len(res)-1]
