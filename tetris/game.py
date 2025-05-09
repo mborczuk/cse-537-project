@@ -12,7 +12,10 @@ from tetris.gui import Gui
 from lib.game_agent_comms import CommunicationsLog
 
 
-from prediction_mul import predict;
+from prediction import predict; # To change models, change this import statement. Possible values: prediction (Random Forest/K Neighbors/MLP/Outline Only; use mode flags to switch between them), prediction_mul_random (Random Forest Trenchcoat), prediction_mul (Optimized Trenchcoat)
+# Mode flags for prediction.py. These have no effect on the other model files (prediction_mul.py and prediction_mul_random.py)
+classifier_mode = 1 # 0 for Random Forest, 1 for K Neighbors, 2 for MLP
+dataset_mode = 1 # 0 for regular dataset, 1 for outline dataset
 
 INITIAL_EX_WIGHT = 0.0
 SPIN_SHIFT_FOR_NON_T = [(1, 0, 0), (-1, 0, 0),
@@ -653,15 +656,14 @@ class Game:
             if copy_state.check_collision():
                 copy_state.tetromino.move((0, -1, 0))
                 ##########################################
-                # 534 LOG ACTIONS
-                print("HERE")
-                file = open("logs/quarantine.txt", "a")
+                # 537 LOG ACTIONS
+                file = open("logs/log.txt", "a")
                 file.write("\n\n");
                 file.write(str(self.current_state.next[0]))
                 file.write("\n");
                 file.write(str(self.current_state.grid))
                 file.write("\n");
-                print(predict([self.current_state.grid, self.current_state.next[0]]));
+                print(predict([self.current_state.grid, self.current_state.next[0]], classifier_mode, dataset_mode));
                 ##########################################
                 add_score, done = copy_state.process_down_collision()
             success = True  # move down will take effect no matter what
@@ -672,14 +674,14 @@ class Game:
         elif action == "drop":
             add_score, done = copy_state.hard_drop()
             ##########################################
-            #534 LOG ACTIONS
-            file = open("logs/quarantine.txt", "a")
+            #537 LOG ACTIONS
+            file = open("logs/log.txt", "a")
             file.write("\n\n");
             file.write(str(self.current_state.next[0]))
             file.write("\n");
             file.write(str(self.current_state.grid))
             file.write("\n");
-            print(predict([self.current_state.grid, self.current_state.next[0]]));
+            print(predict([self.current_state.grid, self.current_state.next[0]], classifier_mode, dataset_mode));
             ###########################################################
             success = True
         elif action == "hold":
@@ -689,8 +691,8 @@ class Game:
 
         if success:
             ##########################################
-            #534 LOG ACTIONS
-            file = open("logs/quarantine.txt", "a")
+            #537 LOG ACTIONS
+            file = open("logs/log.txt", "a")
             if(action != "down" and action != "soft" and action != "drop" and action != "hold"):
                 file.write(action + ", ")
             ##########################################
@@ -705,14 +707,14 @@ class Game:
                 self.current_state.tetromino.move((0, -1, 0))
                 add_score, done = self.current_state.process_down_collision()
                 ##########################################
-                #534 LOG ACTIONS
-                file = open("logs/quarantine.txt", "a")
+                #537 LOG ACTIONS
+                file = open("logs/log.txt", "a")
                 file.write("\n\n");
                 file.write(str(self.current_state.next[0]))
                 file.write("\n");
                 file.write(str(self.current_state.grid))
                 file.write("\n");
-                print(predict([self.current_state.grid, self.current_state.next[0]]));
+                print(predict([self.current_state.grid, self.current_state.next[0]], classifier_mode, dataset_mode));
                 ##########################################
             success = True  # move down will take effect no matter what
         else:

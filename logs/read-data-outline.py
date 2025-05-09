@@ -3,10 +3,7 @@ import json
 
 f = open("log.txt")
 l = f.readlines()
-g = open("samples-regular.json", "w")
-# f = open("julia.txt")
-# l = f.readlines()
-# g = open("samples-julia.json", "w")
+g = open("samples-outline.json", "w")
 
 index = 0
 dic = {}
@@ -35,16 +32,18 @@ while (index < len(l)):
     print("index: " + str(index))
     print("Max: " + str(len(l)))
     board = json.loads(board)
-    sum_list = []
 
+    sum_list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+    row = 0;
     for i in board:
-        sum = 0
-        power = len(board[0]) - 1
+        loc = 0;
         for j in i:
-            if (j != 0):
-                sum += 2 ** power
-            power -= 1
-        sum_list.append(sum)
+            if (j != 0 and sum_list[loc] < j):
+                sum_list[loc] = 20-row;
+            loc+=1;
+        row+=1;
+    
     print(sum_list)
     dic[sample_count] = {}
     dic[sample_count]["board"] = sum_list
@@ -52,7 +51,7 @@ while (index < len(l)):
     dic[sample_count]["movement"] = step
     dic[sample_count]["rotation"] = rot
     sample_count += 1
-    # print([(l[index][0:-1], l[index + 1][0:-1]), (5,)])
+
     index += 4
 g.write(json.dumps(dic))
 g.close()

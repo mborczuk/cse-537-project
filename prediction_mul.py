@@ -11,7 +11,7 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 import json
 
 
-def predict(data):
+def predict(data, classifier_mode, dataset_mode): # classifier_mode and dataset_mode unused, just here to match prediction.py
     f = open("logs/samples-julia-outline.json")
     j = json.loads("\n".join(f.readlines()))
     # f2 = open("data_new_1.json")
