@@ -31,7 +31,9 @@ All models were trained and tested using the scikit-learn package.
 
 To train our models, we simply edit line 15 in the ```tetris/game.py``` file to read from either ```prediction``` (base classification models; use the ```classifier_mode``` variable on line 17 of ```tetris/game.py``` to switch between them), ```prediction_mul_random``` (trenchcoat with random forest), or ```prediction_mul``` (trenchcoat with optimized classifiers). So, line 15 should read ```from prediction import predict```, ```from prediction_mul_random import predict```, or ```from prediction_mul import predict```. In addition, by setting the ```dataset_mode``` variable on line 18 ```tetris/game.py```, the dataset to use can be selected (this only works for the base classification models, however). There are two main datasets to choose from, ```logs/samples-julia.json``` (regular dataset; set ```dataset_mode = 0```) and ```logs/samples-julia-outline.json``` (outline dataset; set ```dataset_mode = 1```). There is also a validation set located in ```logs/samples.json```, but the code is not currently set up to read from it.
 
-Once these settings are set, the code can be run with ```python main.py --mode=manual``. This will launch a new tetris game, train the selected model on the selected dataset, and then start outputting the moves it thinks the user should make.
+Once these settings are set, the code can be run with ```python main.py --mode=manual```. This will launch a new tetris game, train the selected model on the selected dataset, and then start outputting the moves it thinks the user should make.  
+
+The move output is in the form of ```x:y```, where ```x``` is the number of spaces to move (a negative number means left, a positive number means right) and ```y``` is the number of clockwise rotations to make.
 
 ## Models and Datasets Available
 ### Models
