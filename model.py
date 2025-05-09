@@ -12,7 +12,6 @@ import json
 f = open("logs/samples.json")
 j = json.loads("\n".join(f.readlines()))
 
-# Example using NumPy arrays
 x = []
 y = []
 for i in range(0, 259):
@@ -26,16 +25,12 @@ for i in range(0, 259):
     y.append(sample_y)
 X_np = np.array(x)
 y_np = np.array(y)
-# scaler = MinMaxScaler()
-# scaled_data = scaler.fit_transform(X_np)
-# print(scaled_data)
-# Split data into training and testing sets
+
 X_train, X_test, y_train, y_test = train_test_split(X_np, y_np, random_state=42)
 
 model = RandomForestClassifier()
 model.fit(X_train, y_train)
 
-# Make predictions
 predictions = model.predict(X_test)
 
 print(y_test)

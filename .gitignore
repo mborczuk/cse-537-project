@@ -1,6 +1,7 @@
 *.mp4
 games_archive/*
 logs/*
+old_data/*
 
 # Byte-compiled / optimized / DLL files
 lib/__pycache__/

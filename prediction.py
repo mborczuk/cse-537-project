@@ -28,11 +28,9 @@ def predict(data, classifier_mode, dataset_mode):
         y.append(sample_y)
     X_np = np.array(x)
     y_np = np.array(y)
-    # scaler = MinMaxScaler()
-    # scaled_data = scaler.fit_transform(X_np)
-    # Split data into training and testing sets
+    # split data into training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(X_np, y_np, random_state=42)
-    # Train a logistic regression model
+
     model = None
     if (classifier_mode == 0):
         model = RandomForestClassifier()
@@ -48,7 +46,7 @@ def predict(data, classifier_mode, dataset_mode):
     board = json.loads(board)
     power = len(board[0]) * len(board) - 1
 
-    if (classifier_mode == 1): # outline datasets
+    if (classifier_mode == 1): # outline dataset
         sum_list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
         row = 0;

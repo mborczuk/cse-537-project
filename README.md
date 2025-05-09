@@ -8,8 +8,20 @@ We mostly only used this repository for the Tetris interface, which we modified 
 
 ## Modifications
 
-We only modified the tetris/game.py file, specifically the ```act``` method in the Game class. This is the method that is called when a new piece spawns and when the user moves/rotates a piece. We changed this function to log the piece, board state, and the move the user made - these logs are what were parsed to create our dataset. In addition, we changed this function to add a call to the predict function, which queries our trained model(s) for what move to make next based on the current board state and piece.
+We only modified the tetris/game.py file, specifically the ```act``` method in the ```Game``` class. This is the method that is called when a new piece spawns and when the user moves/rotates a piece. We changed this function to log the piece, board state, and the move the user made - these logs are what were parsed to create our dataset. In addition, we changed this function to add a call to the predict function, which queries our trained model(s) for what move to make next based on the current board state and piece.
 
+## Setting Up the Environment
+```
+# create and activate a virtual environment
+python -m venv venv
+source venv/bin/activate
+
+# install the dependencies
+pip install -r requirements.txt
+
+# set your API keys in .env (not necessary for classifiers, only necessary for running the original paper's models)
+cp .env.example .env
+```
 ## Generating Log Data
 When playing through the interface, the game will automatically log all moves to ```logs/log.txt```. The ```logs/read-data.py``` file can convert the raw log data into a regular dataset (JSON) usable by the models, and the ```logs/read-data-outline.py``` file can convert the raw log data into an outline dataset (JSON) usable by the models.
 

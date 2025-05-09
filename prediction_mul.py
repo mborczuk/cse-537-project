@@ -16,7 +16,6 @@ def predict(data, classifier_mode, dataset_mode): # classifier_mode and dataset_
     j = json.loads("\n".join(f.readlines()))
     # f2 = open("data_new_1.json")
     # j2 = json.loads("\n".join(f2.readlines()))
-    # Example using NumPy arrays
     x_1 = []
     y_1 = []
     x_2 = []
