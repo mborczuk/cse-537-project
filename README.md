@@ -8,7 +8,7 @@ We mostly only used this repository for the Tetris interface, which we modified 
 
 ## Modifications
 
-We only modified the tetris/game.py file, specifically the act method in the Game class. This is the method that is called when a new piece spawns and when the user moves/rotates a piece. We changed this function to log the piece, board state, and the move the user made - these logs are what were parsed to create our dataset. In addition, we changed this function to add a call to the predict function, which queries our trained model(s) for what move to make next based on the current board state and piece.
+We only modified the tetris/game.py file, specifically the ```act``` method in the Game class. This is the method that is called when a new piece spawns and when the user moves/rotates a piece. We changed this function to log the piece, board state, and the move the user made - these logs are what were parsed to create our dataset. In addition, we changed this function to add a call to the predict function, which queries our trained model(s) for what move to make next based on the current board state and piece.
 
 ## Generating Log Data
 When playing through the interface, the game will automatically log all moves to ```logs/log.txt```. The ```logs/read-data.py``` file can convert the raw log data into a regular dataset (JSON) usable by the models, and the ```logs/read-data-outline.py``` file can convert the raw log data into an outline dataset (JSON) usable by the models.
@@ -32,20 +32,20 @@ Base classification models can be toggled using the ```classifier_mode``` variab
     - from the original paper  
 - Random Forest
     - Use ```from prediction import predict``` on line 15 of ```tetris/game.py```
-    - Set ```classifier_mode`` to 0 
-    - Set ```dataset_mode`` to 0 
+    - Set ```classifier_mode``` to 0 
+    - Set ```dataset_mode``` to 0 
 - K Neighbors
     - Use ```from prediction import predict``` on line 15 of ```tetris/game.py```
-    - Set ```classifier_mode`` to 1 
-    - Set ```dataset_mode`` to 0  
+    - Set ```classifier_mode``` to 1 
+    - Set ```dataset_mode``` to 0  
 - Multi-Layer Perceptron
     - Use ```from prediction import predict``` on line 15 of ```tetris/game.py```
-    - Set ```classifier_mode`` to 2 
-    - Set ```dataset_mode`` to 0   
+    - Set ```classifier_mode``` to 2 
+    - Set ```dataset_mode``` to 0   
 - Outline Only
     - Use ```from prediction import predict``` on line 15 of ```tetris/game.py```
-    - Set ```classifier_mode`` to 0 
-    - Set ```dataset_mode`` to 1 
+    - Set ```classifier_mode``` to 0 
+    - Set ```dataset_mode``` to 1 
 - Trenchcoat (Random Forest) 
     - Use ```from prediction_mul_random import predict``` on line 15 of ```tetris/game.py```  
 - Trenchcoat (Optimized) 
@@ -64,3 +64,10 @@ Base classification models can be toggled using the ```classifier_mode``` variab
 ## Requirements
 All requirements can be found in requirements.txt.
 
+## Other Files
+- ```logs/julia.txt```
+    - Raw log data that was converted into ```logs/samples-julia.json``` and ```logs/samples-julia-outline.json```
+- ```model.py```
+    - Initial base classifier model we wrote, later adapted into ```prediction.py```
+- ```model_mul.py```
+    - Initial trenchcoat model we wrote, later adapted into ```prediction_mul_random.py``` and ```prediction_mul.py```
