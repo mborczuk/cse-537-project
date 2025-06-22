@@ -78,7 +78,7 @@ def predict(data, classifier_mode, dataset_mode): # classifier_mode and dataset_
     model_1.fit(X_train_1, y_train_1)
     y_pred_1 = model_1.predict(X_test_1);
     accuracy = accuracy_score(y_test_1, y_pred_1)
-    print(f"Accuracy 1: {accuracy*100:.2f}%")
+    # print(f"Accuracy 1: {accuracy*100:.2f}%")
 
     X_2_np = np.array(x_2)
     y_2_np = np.array(y_2)
@@ -88,7 +88,7 @@ def predict(data, classifier_mode, dataset_mode): # classifier_mode and dataset_
     model_2.fit(X_train_2, y_train_2)
     y_pred_2 = model_2.predict(X_test_2);
     accuracy = accuracy_score(y_test_2, y_pred_2)
-    print(f"Accuracy 2: {accuracy*100:.2f}%")
+    # print(f"Accuracy 2: {accuracy*100:.2f}%")
 
     X_3_np = np.array(x_3)
     y_3_np = np.array(y_3)
@@ -98,7 +98,7 @@ def predict(data, classifier_mode, dataset_mode): # classifier_mode and dataset_
     model_3.fit(X_train_3, y_train_3)
     y_pred_3 = model_3.predict(X_test_3);
     accuracy = accuracy_score(y_test_3, y_pred_3)
-    print(f"Accuracy 3: {accuracy*100:.2f}%")
+    # print(f"Accuracy 3: {accuracy*100:.2f}%")
 
     X_4_np = np.array(x_4)
     y_4_np = np.array(y_4)
@@ -108,7 +108,7 @@ def predict(data, classifier_mode, dataset_mode): # classifier_mode and dataset_
     model_4.fit(X_train_4, y_train_4)
     y_pred_4 = model_4.predict(X_test_4);
     accuracy = accuracy_score(y_test_4, y_pred_4)
-    print(f"Accuracy 4: {accuracy*100:.2f}%")
+    # print(f"Accuracy 4: {accuracy*100:.2f}%")
 
     X_5_np = np.array(x_5)
     y_5_np = np.array(y_5)
@@ -118,7 +118,7 @@ def predict(data, classifier_mode, dataset_mode): # classifier_mode and dataset_
     model_5.fit(X_train_5, y_train_5)
     y_pred_5 = model_5.predict(X_test_5);
     accuracy = accuracy_score(y_test_5, y_pred_5)
-    print(f"Accuracy 5: {accuracy*100:.2f}%")
+    # print(f"Accuracy 5: {accuracy*100:.2f}%")
 
     X_6_np = np.array(x_6)
     y_6_np = np.array(y_6)
@@ -128,7 +128,7 @@ def predict(data, classifier_mode, dataset_mode): # classifier_mode and dataset_
     model_6.fit(X_train_6, y_train_6)
     y_pred_6 = model_6.predict(X_test_6);
     accuracy = accuracy_score(y_test_6, y_pred_6)
-    print(f"Accuracy 6: {accuracy*100:.2f}%")
+    # print(f"Accuracy 6: {accuracy*100:.2f}%")
 
     X_7_np = np.array(x_7)
     y_7_np = np.array(y_7)
@@ -138,7 +138,7 @@ def predict(data, classifier_mode, dataset_mode): # classifier_mode and dataset_
     model_7.fit(X_train_7, y_train_7)
     y_pred_7 = model_1.predict(X_test_7);
     accuracy = accuracy_score(y_test_7, y_pred_7)
-    print(f"Accuracy 7: {accuracy*100:.2f}%")
+    # print(f"Accuracy 7: {accuracy*100:.2f}%")
 
 
     board = str(data[0])
